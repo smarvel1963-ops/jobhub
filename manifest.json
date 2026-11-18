@@ -1,0 +1,37 @@
+{
+  "id": "/jobhub/",
+  "name": "Job Hub",
+  "short_name": "Job Hub",
+  "description": "Job Hub by Marvel Corp - your next job, found. Today's openings from companies' own job boards, remote job boards and USAJOBS, matched to you with the reasons shown (which of the job's words are on your resume and which aren't). A resume studio, your application pipeline from Saved to Offer, and interview and follow-up reminders. Apply always opens the employer's own posting. Data stays on your phone.",
+  "lang": "en-US",
+  "dir": "ltr",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0c1a3e",
+  "theme_color": "#0c1a3e",
+  "categories": [
+    "business",
+    "productivity"
+  ],
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

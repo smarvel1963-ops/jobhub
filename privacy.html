@@ -1,0 +1,61 @@
+<!doctype html>
+<!-- SAVE AS: privacy.html · LOCATION: C:/MarvelApps/jobhub/privacy.html
+     Job Hub privacy policy (app v1.66, 2026-11-17). Same structure as Cooking Hub's and Pet Hub's. Plain words; only claims the
+     code actually backs (shared Hub engine in the Day Hub repo, DH_MODE "job" + job.js). Update the date whenever a data flow changes. -->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Job Hub Privacy</title>
+  <link rel="icon" type="image/png" href="icon-192.png">
+  <style>
+    :root { --bg: #f6f3ec; --fg: #14203f; --dim: #56607a; --accent: #9a6b12; --line: rgba(0,0,0,.12); }
+    @media (prefers-color-scheme: dark) { :root { --bg: #0c1a3e; --fg: #eef1f8; --dim: #b8c0d6; --accent: #ffd27a; --line: rgba(255,255,255,.14); } }
+    body { margin: 0; background: var(--bg); color: var(--fg); font: 16px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+    main { max-width: 720px; margin: 0 auto; padding: 28px 16px 60px; }
+    h1 { font-size: 28px; margin: 0 0 4px; } h2 { font-size: 19px; margin: 28px 0 6px; }
+    .dim { color: var(--dim); font-size: 14px; } a { color: var(--accent); }
+    .wrap { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; font-size: 15px; } td, th { text-align: left; vertical-align: top; padding: 8px 6px; border-bottom: 1px solid var(--line); }
+    th { font-size: 13px; color: var(--dim); font-weight: 600; }
+  </style>
+</head>
+<body><main>
+  <h1>Job Hub privacy policy</h1>
+  <p class="dim">Job Hub is an app by Marvel Corp, part of the Hub family of apps. Last updated November 17, 2026.</p>
+
+  <h2>The short version</h2>
+  <p>What you put in Job Hub stays on your phone. There are no Job Hub accounts, no ad trackers and no analytics in the app. Your information is never sold, never used for advertising and never sent to employers or recruiters. Job Hub never applies for you and never signs in to any job site. The one thing that leaves your phone with your information in it is the optional AI helper, listed below.</p>
+
+  <h2>What stays on your phone</h2>
+  <p>Everything you type: your first name if you give it, the jobs you're looking for, the state you want to work in, remote, hybrid or on-site, the job type, the lowest pay you'd take, your current pay, your years of experience, the industries you like, how much each thing matters to you, your resume (name, headline, summary, each job you've held with its dates and what you did, and your skills), the jobs you save, their stage (Saved, Applied, Interview, Offer, Closed), interview and follow-up dates and follow-up notes, your notes, jobs you paste in yourself, jobs you hide, and the employers you follow. These are saved in your browser's storage on your phone. We cannot see them.</p>
+  <p><b>Your current pay is private.</b> It is used on your phone only, to show how a job compares. It is never sent anywhere, the AI helper included.</p>
+  <p><b>Deleting:</b> ⚙ Settings → <b>Your data</b> → <b>Erase everything</b> deletes your Job Hub information on the phone. One saved job: open it → <b>Take it off my pipeline</b>.</p>
+
+  <h2>Where the jobs come from</h2>
+  <p>Once a day Job Hub collects open jobs from free, public sources: companies' own job boards (Greenhouse, Lever and Ashby), remote jobs from <a href="https://jobicy.com" target="_blank" rel="noopener">Jobicy</a>, and US federal jobs from <a href="https://www.usajobs.gov" target="_blank" rel="noopener">USAJOBS</a>. They are saved as one list on Job Hub's own site, and your phone downloads that list. Matching you to jobs happens <b>on your phone</b>: your resume and choices are never sent to get matches.</p>
+  <p>When you tap <b>Apply</b>, the job's own posting opens on the employer's site (or Jobicy or USAJOBS) under that site's own privacy policy. What you send them is between you and them.</p>
+  <p>A match score is a guide, not a promise. It shows its reasons - which words from the job are on your resume and which aren't - and marks anything not posted (like pay) as unknown instead of guessing.</p>
+
+  <h2>What leaves your phone, and why</h2>
+  <div class="wrap"><table>
+    <tr><th>When</th><th>What is sent</th><th>To whom</th></tr>
+    <tr><td>Always (opening the app)</td><td>Normal web requests (your IP address, browser type), including the download of today's job list and, when you open a job, its details. Nothing about you or your search is sent.</td><td>GitHub Pages, which hosts the app and the job list, and Google Fonts, which supplies the lettering.</td></tr>
+    <tr><td>If you enter a city or ZIP for weather (optional, in ⚙)</td><td>The city or ZIP code you enter, then that place's map location</td><td>Open-Meteo (weather and place search). For US ZIP codes, also Zippopotam.us.</td></tr>
+    <tr><td>If you use 💡 Ask with the AI helper on</td><td>Your question, and the Job Hub information it needs to answer from: the jobs you're looking for, where, work style, job type, the lowest pay you'd take, your years of experience and industries, your resume (headline, summary, jobs held with dates and what you did, skills), and your saved jobs with their stage, pay and dates. Never your current pay.</td><td>Our relay (a Google Apps Script run by Marvel Corp), which passes it to Anthropic's Claude to get the answer (<a href="https://www.anthropic.com/legal/privacy" target="_blank" rel="noopener">Anthropic's privacy policy</a>). The relay does not save your text.</td></tr>
+    <tr><td>If you tap Copy as Text, or save your resume as a file</td><td>Your resume text, onto your phone's clipboard or into a text file on your phone</td><td>Wherever you paste or send it</td></tr>
+    <tr><td>If you tap Share on a job</td><td>The job's title, employer and link</td><td>Whatever app you pick on your phone's share menu</td></tr>
+    <tr><td>If you turn on backup</td><td>A copy of your Job Hub information</td><td>A hidden app folder in <b>your own</b> Google Drive. Only the Hub apps on your devices can read it. We cannot.</td></tr>
+    <tr><td>If you turn on reminders</td><td>Nothing. Reminders come from your phone itself.</td><td>No one</td></tr>
+  </table></div>
+
+  <h2>Not career, legal or financial advice</h2>
+  <p>Job Hub helps you find and track jobs. Pay ranges come from the postings themselves or from similar postings in today's list. Nothing in the app is career, legal or financial advice, and Job Hub is not an employer, a staffing agency or a recruiter.</p>
+
+  <h2>Children</h2>
+  <p>Job Hub is made for adults looking for work. It has no accounts and does not knowingly collect information from children under 13.</p>
+
+  <h2>Contact</h2>
+  <p>Questions about privacy: <a href="mailto:smarvel1963@gmail.com">smarvel1963@gmail.com</a>.</p>
+</main></body>
+</html>

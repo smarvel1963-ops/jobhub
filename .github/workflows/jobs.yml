@@ -1,0 +1,83 @@
+# jobs.yml
+# Save to: C:\MarvelApps\jobhub\.github\workflows\jobs.yml
+# Job Hub's site + daily job feed. Builds the feed with tools/build_jobs.py and PUBLISHES the whole site to GitHub Pages straight
+# from the run - the feed (about 13 MB of JSON that changes every day) is never committed, so the repo doesn't grow by it every day.
+# Needs: Settings -> Pages -> Source = "GitHub Actions" (not "Deploy from a branch").
+# Runs: every day, on every push to main (a site change), and from the "Run workflow" button.
+# If a build fails (a source is down, or the half-size guard trips), the site still goes out with YESTERDAY'S live feed, and the
+# run is marked failed so it shows up. 11/17 (was: a daily commit of the feed - about 13 MB a day of repo growth).
+
+name: Job Hub site + feed
+
+on:
+  schedule:
+    - cron: "37 10 * * *"   # every day 10:37 UTC (4:37 AM Central standard time); a fixed odd minute, never :00
+  push:
+    branches: [main]
+  workflow_dispatch:         # "Run workflow" button for a manual refresh
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: jobhub-pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    outputs:
+      built: ${{ steps.build.outcome }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Get the live feed (the half-size guard compares to it; it is also the fallback)
+        run: |
+          LIVE="https://smarvel1963-ops.github.io/jobhub"
+          mkdir -p jobs
+          curl -fsSL "$LIVE/jobs.json" -o jobs.json || rm -f jobs.json
+          if [ -f jobs.json ]; then echo "live feed found"; else echo "no live feed yet (first run)"; fi
+
+      - name: Build the job feed
+        id: build
+        continue-on-error: true
+        env:
+          USAJOBS_KEY: ${{ secrets.USAJOBS_KEY }}
+          USAJOBS_EMAIL: ${{ secrets.USAJOBS_EMAIL }}
+        run: python tools/build_jobs.py
+
+      - name: Build failed - keep yesterday's live feed
+        if: steps.build.outcome != 'success'
+        run: |
+          LIVE="https://smarvel1963-ops.github.io/jobhub"
+          test -f jobs.json || { echo "No new feed and no live feed to fall back on."; exit 1; }
+          for i in $(seq -w 0 63); do curl -fsSL "$LIVE/jobs/detail_$i.json" -o "jobs/detail_$i.json" || true; done
+          curl -fsSL "$LIVE/jobs/vocab.json" -o jobs/vocab.json || true
+          echo "Publishing with yesterday's feed."
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
+
+      - name: Mark the run failed if today's feed didn't build (the site is still up, with yesterday's jobs)
+        if: needs.build.outputs.built != 'success'
+        run: |
+          echo "The job feed did not build today - check the 'Build the job feed' step's log."
+          exit 1

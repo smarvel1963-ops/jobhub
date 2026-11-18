@@ -1,0 +1,5 @@
+# .gitignore - Save to: C:\MarvelApps\jobhub\.gitignore
+# The job feed is built and published by .github/workflows/jobs.yml every day - never committed (about 13 MB of JSON a day).
+jobs.json
+jobs/
+__pycache__/
