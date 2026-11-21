@@ -5,10 +5,10 @@
  * are announced by ../dayhub/version.json - this file rarely changes. It clears ONLY its own old caches (never another Hub's offline
  * copy), reads its own copy first when offline, and never stores the update check. The job detail shards (jobs/detail_NN.json) are
  * cached as they are opened, not up front. */
-const CACHE = "jobhub-v1";
+const CACHE = "jobhub-v2";
 const SHELL = ["./", "index.html", "manifest.json", "icon-192.png", "icon-512.png", "icon-180.png",
   "../dayhub/styles.css", "../dayhub/jobtiles.css", "../dayhub/features.js", "../dayhub/app.js", "../dayhub/scenes.js", "../dayhub/cruise.js", "../dayhub/shell.js", "../dayhub/trip.js", "../dayhub/ships.js",
-  "../dayhub/job.js", "../dayhub/ui.js", "privacy.html", "../dayhub/terms.html"];
+  "../dayhub/job.js", "../dayhub/basics.js", "../dayhub/ui.js", "privacy.html", "../dayhub/terms.html"];
 self.addEventListener("install", e => {
   self.skipWaiting();
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(SHELL)));
