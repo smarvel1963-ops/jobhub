@@ -33,6 +33,8 @@ jobs:
       built: ${{ steps.build.outcome }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          persist-credentials: false   # 11/22 (Aikido scan): nothing below runs git, so the run's token isn't left in .git/config
 
       - uses: actions/setup-python@v5
         with:
